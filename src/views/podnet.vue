@@ -196,7 +196,7 @@ export default {
         };
     },
     computed: {
-        isValidForm: function() {
+        isValidForm: function () {
             let validity = false;
             // This disables the button if email is not it the right form
             let email = true;
@@ -214,7 +214,7 @@ export default {
             return validity;
         },
         subCategories: {
-            get: function() {
+            get: function () {
                 // There have to be options
                 let options = [];
                 let persona = this.form.categories.persona;
@@ -244,7 +244,7 @@ export default {
             this.token = token;
             this.submitForm();
         },
-        validInput: function(value, type) {
+        validInput: function (value, type) {
             let answer = false;
             let regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -263,7 +263,7 @@ export default {
 
             return answer;
         },
-        logout: async function() {
+        logout: async function () {
             const logoutURL =
                 "https://lepsiesluzby.sk/jira/rest/auth/1/session";
             try {
@@ -272,7 +272,7 @@ export default {
                 console.log(error);
             }
         },
-        postData: async function(inputData) {
+        postData: async function (inputData) {
             const postURL = "https://lepsiesluzby.sk/jira/rest/api/2/issue";
             const config = {
                 headers: {
@@ -317,7 +317,7 @@ export default {
                 console.log(error);
             }
         },
-        submitForm: function() {
+        submitForm: function () {
             // TODO: Add validation, change customfields to be more general?
             let data = this.form;
             let cfStr = "customfield_";
@@ -338,7 +338,7 @@ export default {
                             name: "e-services",
                         },
                     ],
-                    customfield_10200: data.email,
+                    customfield_10200: data.email.toLowerCase(),
                     customfield_10116: data.name,
                 },
             };

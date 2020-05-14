@@ -29,7 +29,7 @@ export default {
         };
     },
     computed: {
-        tableData: function() {
+        tableData: function () {
             let jiraData = this.jiraData;
             let table = {
                 head: [
@@ -69,8 +69,9 @@ export default {
                     const dateObj = new Date(
                         Date.parse(date.replace(/\b(\+[0-9]{4})\b/gi, ""))
                     );
-                    return `${dateObj.getDate()}. ${dateObj.getMonth() +
-                        1}. ${dateObj.getFullYear()}`;
+                    return `${dateObj.getDate()}. ${
+                        dateObj.getMonth() + 1
+                    }. ${dateObj.getFullYear()}`;
                 };
 
                 jiraData.data.issues.forEach((issue) => {
@@ -89,11 +90,11 @@ export default {
             return table;
         },
     },
-    mounted: async function() {
+    mounted: async function () {
         this.jiraData = await this.getJiraData();
     },
     methods: {
-        getJiraData: async function() {
+        getJiraData: async function () {
             const searchURL = "https://lepsiesluzby.sk/jira/rest/api/2/search";
             const config = {
                 headers: {
@@ -110,7 +111,7 @@ export default {
 
             return response;
         },
-        openJira: function() {
+        openJira: function () {
             window.open(
                 "https://lepsiesluzby.sk/jira/secure/Dashboard.jspa?selectPageId=10100",
                 "_blank"
